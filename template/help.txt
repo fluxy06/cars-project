@@ -1,0 +1,4 @@
+card standard size = {
+    width={{min: "200px", preferred: "23.75vw", max: "304px"}}
+    height={{min: "260px", preferred: "30.3vw", max: "388px"}}
+}

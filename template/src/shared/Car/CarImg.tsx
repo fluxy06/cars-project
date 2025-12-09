@@ -18,13 +18,14 @@ const CarImg: React.FC<IconProps> = ({path, width, height, onclick}) => {
         return(
             <>
                 <img
-                className="hover:scale-110 tracking-normal duration-400 cursor-pointer ease-in-out delay-75"
+                className="hover:scale-110 tracking-normal duration-400 cursor-pointer ease-in-out delay-75
+                transition-transform"
                 src={path}
                 alt="car@image" 
                 style={{
                     width: widthAdaptive,
                     height: heightAdaptive,
-                    filter: "drop-shadow(0 8px 12px rgba(0,0,0,0.3))",
+                    filter: "drop-shadow(0 8px 5px rgba(0,0,0,0.3))",
                 }}
                 onClick={onclick}
                 />
