@@ -6,9 +6,10 @@ type ButtonProps = {
   onClick?: () => void;
   width?: { min: string; preferred: string; max: string };
   height?: { min: string; preferred: string; max: string };
+  isCardButton?: boolean
 };
 
-export const ActionButton: React.FC<ButtonProps> = ({ label, onClick, width, height }) => {
+export const ActionButton: React.FC<ButtonProps> = ({ label, onClick, width, height, isCardButton = false}) => {
   const widthAdaptive = width
     ? `clamp(${width.min}, ${width.preferred}, ${width.max})`
     : `clamp(100px, 20vw, 300px)`;
@@ -24,7 +25,9 @@ export const ActionButton: React.FC<ButtonProps> = ({ label, onClick, width, hei
       style={{
         width: widthAdaptive,
         height: heightAdaptive,
-        fontSize: 'clamp(12px, 3vw, 24px)',
+        fontSize: isCardButton 
+        ? 'clamp(8px, 1vw, 10px)' 
+        : 'clamp(12px, 3vw, 24px)',
       }}
     >
       {label}

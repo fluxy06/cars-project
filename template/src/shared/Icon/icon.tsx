@@ -6,9 +6,10 @@ type IconProps = {
     width?: { min: string; preferred: string; max: string };
     height?: { min: string; preferred: string; max: string };
     isUse?: boolean
+    flagAnimation?: boolean
 }
 
-const Icon: React.FC<IconProps> = ({path, width, height, isUse = false}) => {
+const Icon: React.FC<IconProps> = ({path, width, height, isUse = false, flagAnimation = false}) => {
         const [selected, setSelected] = useState(isUse)
         const HeandleClick = () => {
                 setSelected(prev => !prev)
@@ -31,9 +32,9 @@ const Icon: React.FC<IconProps> = ({path, width, height, isUse = false}) => {
                 style={{
                     width: widthAdaptive,
                     height: heightAdaptive,
-                    filter: selected 
+                    filter: flagAnimation ? selected 
                     ? "invert(25%) sepia(100%) saturate(500%) hue-rotate(340deg) drop-shadow(0 0 1px red)"
-                    : "none",
+                    : "none" : "none",
                     cursor: "pointer"
                 }}
                 onClick={HeandleClick}

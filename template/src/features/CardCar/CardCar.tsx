@@ -5,7 +5,8 @@ import UrlIconHeart from "@assets/icons/heart.svg?url"
 import CarImg from "@shared/Car/CarImg"
 import CarBenzIcon from "@assets/car/icon-cars/benz.svg?url"
 import CarMalIcon from "@assets/car/icon-cars/mal.svg?url"
-import CarProgileIcon from "@assets/car/icon-cars/progile.svg?url"
+import CarProfileIcon from "@assets/car/icon-cars/profile.svg?url"
+import ActionButton from "@shared/ActionButton/ActionButton";
 
 type CardCarProps = {
     car?: Car;
@@ -46,6 +47,7 @@ const CardCar: React.FC<CardCarProps> = ({width, height, path}) => {
                             >SUV</p>
                         </div>
                             <Icon
+                            flagAnimation={true}
                             path={UrlIconHeart}
                             width={{min: "16px", preferred: "2vw", max: "24px"}}
                             height={{min: "16px", preferred: "2vw", max: "24px"}}
@@ -56,21 +58,28 @@ const CardCar: React.FC<CardCarProps> = ({width, height, path}) => {
                             <CarImg path={path} onclick={() => {console.log("car is clicked")}}/>
                     </div>
                     <div className="flex row-start-3 row-end-4 col-span-3 justify-between gap-1">
-                            <div className="flex gap-1">
+                            <div className="flex gap-1 items-center">
                                 <Icon path={CarBenzIcon}/>
-                                <p>80L</p>
+                                <p className="text-[clamp(10px,1vw,14px)]">80л</p>
                             </div>
-                            <div className="flex gap-1">
+                            <div className="flex gap-1 items-center">
                                 <Icon path={CarMalIcon}/>
-                                <p>Manual</p>
+                                <p className="text-[clamp(8px,1vw,14px)]">Manual</p>
                             </div>
-                            <div className="flex gap-1">
-                                <Icon path={CarProgileIcon} />
-                                <p>6 человек</p>
+                            <div className="flex gap-1 items-center">
+                                <Icon path={CarProfileIcon} />
+                                <p className="text-[clamp(8px,1vw,14px)]">6 ч.</p>
                             </div>
                     </div>
-                    <div>
-
+                    <div className="flex row-start-4 row-end-4 col-span-3 items-center justify-between">
+                            <div className="flex items-center">
+                                <p className="text-[clamp(12px, 2vw, 16px)] text-black">7 т.р /</p>
+                                <p className="text-[clamp(8px, 1vw, 12px)] text-[#90A3BF]"> день</p>
+                            </div>
+                            <ActionButton label="Арендовать" isCardButton={true}
+                             width={{min: "60px", preferred: "8vw" ,max: "120px"}}
+                             height={{min: "30px", preferred: "calc(20vw * 0.36)", max: "36px"}}
+                             />
                     </div>
             </div>
         </>
