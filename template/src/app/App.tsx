@@ -1,12 +1,11 @@
 import '@app/App.css'
-import Filters from '@features/Filters/Filters';
-import { useMobile } from '@shared/Hooks/useMobile';
+import Header from 'layots/Header/Header';
 
 function App() {
 
   return (
-    <div className='w-full h-full'>
-          <Filters isMobile={useMobile(769)}/>
+    <div className=''>
+          <Header logo="MORENT"/>
      </div>
   )
 }

@@ -33,9 +33,9 @@ const Icon: React.FC<IconProps> = ({path, width, height, isUse = false, flagAnim
                     width: widthAdaptive,
                     height: heightAdaptive,
                     filter: flagAnimation ? selected 
-                    ? "invert(25%) sepia(100%) saturate(500%) hue-rotate(340deg) drop-shadow(0 0 1px red)"
+                    ? `invert(25%) sepia(100%) saturate(500%) hue-rotate(340deg) drop-shadow(0 0 1px red)`
                     : "none" : "none",
-                    cursor: "pointer"
+                    cursor: "pointer",
                 }}
                 onClick={HeandleClick}
                 />
