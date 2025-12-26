@@ -88,7 +88,7 @@ const Filters: React.FC<FilterProps> = ({ onclick, isMobile = false }) => {
                         </div>
                     </div>
 
-                    <div className="flex flex-col items-center gap-1">
+                    <div className="flex flex-col items-left gap-1">
                         <input type="range" className="w-[clamp(130px,50vw,250px)] h-3"/>
                         <span className="text-[clamp(10px,4vw,20px)] text-left">Максимальная стоимость</span>
                     </div>
