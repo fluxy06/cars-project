@@ -1,31 +1,62 @@
 import '@app/App.css'
-import Header from 'layots/Header/Header';
-import Filters from '@features/Filters/Filters';
-import CardCar from '@features/CardCar/CardCar';
-import Lambo from "@assets/car/cars/cr1.svg?url"
 
-function App() {
+import React from 'react';
+import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
+import { Layout, Menu, theme } from 'antd';
+import HeaderMy from "layots/Header/Header"
+
+const { Header, Content, Footer, Sider } = Layout;
+
+const items = [UserOutlined, VideoCameraOutlined, UploadOutlined, UserOutlined].map(
+  (icon, index) => ({
+    key: String(index + 1),
+    icon: React.createElement(icon),
+    label: `nav ${index + 1}`,
+  }),
+);
+
+const App: React.FC = () => {
+  const {
+    token: { colorBgContainer, borderRadiusLG },
+  } = theme.useToken();
 
   return (
-    <div className='grid grid-cols-3'>
-      <div className='grid col-span-3 mb-3'>
-            <Header logo="Qin"/> 
-      </div>
-      <div className='grid col-start-1 col-end-1 '>
-            <Filters isMobile={true}/>
-      </div>
-      <div className='grid col-start-2 col-end-3'>
-        <div>
-                <CardCar 
-                    path={Lambo}
-                    width={{min: "200px", preferred: "23.75vw", max: "304px"}}
-                    height={{min: "260px", preferred: "30.3vw", max: "388px"}}
-                />
-        </div>
-            
-      </div>
-     </div>
-  )
-}
+    <Layout>
+      <Sider
+        breakpoint="lg"
+        collapsedWidth="0"
+        onBreakpoint={(broken) => {
+          console.log(broken);
+        }}
+        onCollapse={(collapsed, type) => {
+          console.log(collapsed, type);
+        }}
+      >
+        <div className="demo-logo-vertical" />
+        <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={items} />
+      </Sider>
+      <Layout>
+        <Header style={{ padding: 0 , background: "transparent", height: "auto"}}>
+            <HeaderMy />
+        </Header> 
+        <Content style={{ margin: '24px 16px 0' }}>
+          <div
+            style={{
+              padding: 24,
+              minHeight: 360,
+              background: colorBgContainer,
+              borderRadius: borderRadiusLG,
+            }}
+          >
+            content
+          </div>
+        </Content>
+        <Footer style={{ textAlign: 'center' }}>
+          Ant Design ©{new Date().getFullYear()} Created by Ant UED
+        </Footer>
+      </Layout>
+    </Layout>
+  );
+};
 
 export default App;

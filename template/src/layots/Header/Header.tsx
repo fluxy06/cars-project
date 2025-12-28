@@ -11,7 +11,7 @@ type HeaderProps = {
     onClick?: () => void
 }
 
-const Header: React.FC<HeaderProps> = ({logo, onClick}) => {
+const HeaderMy: React.FC<HeaderProps> = ({logo, onClick}) => {
         return(
             <header className="inline  w-full h-[clamp(100px,50vw,124px)] items-center pt-10 border-b-[0.3px]">
                 <div className="flex w-full justify-between gap-">
@@ -54,4 +54,4 @@ const Header: React.FC<HeaderProps> = ({logo, onClick}) => {
 }
 
 
-export default Header
+export default HeaderMy

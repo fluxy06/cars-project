@@ -12,7 +12,7 @@ const SearchBar: React.FC<SearchBarProps> = ({value_placeholder, onclick}) => {
             <div className="relative w-[clamp(150px,30vw,450px)]">
       <input
         type="search"
-        className="w-full bg-white border-[0.1px] border-[#596780]/50 rounded-2xl py-2 px-5 text-[#596780] text-[clamp(12px,2vw,20px)]"
+        className="w-full h-13 bg-white border-[0.1px] border-[#596780]/50 rounded-2xl py-2 px-5 text-[#596780] text-[clamp(12px,2vw,20px)]"
         placeholder={value_placeholder}
       />
 
