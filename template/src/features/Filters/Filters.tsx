@@ -1,6 +1,6 @@
 import React, { useState } from "react"
-import { enumToArray } from "@entities/Car/types"
-import { capacity_car, type_car } from "@entities/Car/types"
+import { enumToArray } from "@entities/car/types"
+import { capacity_car, type_car } from "@entities/car/types"
 import { motion } from "framer-motion"
 
 type FilterProps = {
@@ -12,7 +12,7 @@ const Filters: React.FC<FilterProps> = ({ onclick, isMobile = false }) => {
     const types = enumToArray(type_car);
     const capacity = enumToArray(capacity_car);
 
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(true);
 
     return (
         <motion.div
