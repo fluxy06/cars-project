@@ -16,7 +16,7 @@ const CatalogCars: React.FC = () => {
         navigation={true}
         modules={[Navigation]}
         breakpoints={{
-          640: {
+          200: {
             slidesPerView: 2,
             spaceBetween: 20,
           },
