@@ -3,17 +3,23 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import CardCar from '@features/CardCar/CardCar';
-import { cars } from '@entities/data/data'; 
 
-const CatalogCars: React.FC = () => {
+import { useSelector } from 'react-redux';
+
+import CardCar from '@features/CardCar/CardCar';
+import { selectFilteredCars } from '@entities/car/select/selectors';
+
+  const CatalogCars: React.FC = () => {
+  const cars = useSelector(selectFilteredCars);
+
   return (
     <div className="flex">
       <Swiper
+        key={cars.length}
         spaceBetween={30}
         slidesPerView={1}
-        loop={true}
-        navigation={true}
+        loop
+        navigation
         modules={[Navigation]}
         breakpoints={{
           200: {
@@ -27,13 +33,9 @@ const CatalogCars: React.FC = () => {
         }}
         className="mySwiper"
       >
-        {cars.map((car) => (
+        {cars.map(car => (
           <SwiperSlide key={car.id}>
-            <CardCar
-              car={car}
-              width={{ min: "200px", preferred: "23.75vw", max: "304px" }}
-              height={{ min: "260px", preferred: "30.3vw", max: "388px" }}
-            />
+            <CardCar car={car} />
           </SwiperSlide>
         ))}
       </Swiper>
