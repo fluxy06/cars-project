@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { enumToArray, type_car, capacity_car } from "@entities/car/types";
+import { type_car, capacity_car } from "@entities/car/types";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@app/store/store";
@@ -10,12 +10,13 @@ type FilterProps = {
   isMobile?: boolean;
 };
 
+// Массивы enum для отображения
+const TYPES = Object.values(type_car);
+const CAPACITIES = Object.values(capacity_car);
+
 const Filters: React.FC<FilterProps> = ({ isMobile = false }) => {
   const dispatch = useDispatch();
   const filters = useSelector((state: RootState) => state.carFilters);
-
-  const types = enumToArray(type_car);       // ["Спорт", "Седан", ...]
-  const capacities = enumToArray(capacity_car); // ["2-ух местная", ...]
 
   const [open, setOpen] = useState(true);
 
@@ -42,12 +43,12 @@ const Filters: React.FC<FilterProps> = ({ isMobile = false }) => {
           <div>
             <p className="text-left text-[clamp(16px,5vw,20px)]">Категории автомобилей</p>
             <div className="grid gap-3 mt-2">
-              {types.map((t) => (
+              {TYPES.map((t) => (
                 <label key={t} className="flex items-center gap-2">
                   <input
                     type="checkbox"
-                    checked={filters.types.includes(t as type_car)}
-                    onChange={() => dispatch(toggleType(t as type_car))}
+                    checked={filters.types.includes(t)}
+                    onChange={() => dispatch(toggleType(t))}
                   />
                   <span>{t}</span>
                 </label>
@@ -59,12 +60,12 @@ const Filters: React.FC<FilterProps> = ({ isMobile = false }) => {
           <div>
             <p className="text-left">Вместимость</p>
             <div className="grid gap-3 mt-2">
-              {capacities.map((c) => (
+              {CAPACITIES.map((c) => (
                 <label key={c} className="flex items-center gap-2">
                   <input
                     type="checkbox"
-                    checked={filters.capacity.includes(c as capacity_car)}
-                    onChange={() => dispatch(toggleCapacity(c as capacity_car))}
+                    checked={filters.capacity.includes(c)}
+                    onChange={() => dispatch(toggleCapacity(c))}
                   />
                   <span>{c}</span>
                 </label>

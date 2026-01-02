@@ -6,7 +6,7 @@ import BigCarImgTwo from "@assets/car/cars/cr4.svg?url"
 
 const BigCardsLayot: React.FC = () => {
     return(
-        <>
+        <div className="flex gap-6 flex-wrap">
               <CardBigWidget 
               width={{
                 min: '280px',
@@ -31,7 +31,7 @@ const BigCardsLayot: React.FC = () => {
                 max: "360px"
               }}
               />
-        </>
+        </div>
     )
 }
 

@@ -14,6 +14,7 @@ export enum capacity_car {
 }
 
 // Теперь конвертация enum в массив строк можно через Object.values
-export function enumToArray<E extends object>(enm: E): string[] {
-  return Object.values(enm) as string[];
+export function enumToArray<E extends object>(enm: E): (E[keyof E])[] {
+  return Object.values(enm);
 }
+

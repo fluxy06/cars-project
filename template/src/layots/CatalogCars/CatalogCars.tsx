@@ -3,44 +3,50 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { useContainerWidth } from '@features/Hooks/Contain';
 
 import { useSelector } from 'react-redux';
 
 import CardCar from '@features/CardCar/CardCar';
 import { selectFilteredCars } from '@entities/car/select/selectors';
 
-  const CatalogCars: React.FC = () => {
+ const CatalogCars: React.FC = () => {
   const cars = useSelector(selectFilteredCars);
+  const { ref, width } = useContainerWidth();
+
+  const slidesPerView =
+    width < 640 ? 1 :
+    width < 1024 ? 2 :
+    3;
 
   return (
-    <div className="flex">
+    <div ref={ref} className="w-full min-w-0">
       <Swiper
-        key={cars.length}
-        spaceBetween={30}
-        slidesPerView={1}
-        loop
-        navigation
         modules={[Navigation]}
-        breakpoints={{
-          200: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          1024: {
-            slidesPerView: 3,
-            spaceBetween: 30,
-          },
+        navigation={{
+          nextEl: '.swiper-button-next-custom',
+          prevEl: '.swiper-button-prev-custom',
         }}
-        className="mySwiper"
+        loop={true}
+        slidesPerView={slidesPerView}
+        centeredSlides={slidesPerView === 1}
       >
         {cars.map(car => (
           <SwiperSlide key={car.id}>
             <CardCar car={car} />
           </SwiperSlide>
         ))}
+
+        {/* Кастомные стрелки */}
+        <div className="swiper-button-prev-custom absolute left-1 top-1/2 -translate-y-1/2 z-10 text-2xl cursor-pointer">
+          &#10094;
+        </div>
+        <div className="swiper-button-next-custom absolute right-16 top-1/2 -translate-y-1/2 z-10 text-2xl cursor-pointer">
+          &#10095;
+        </div>
       </Swiper>
     </div>
   );
 };
 
-export default CatalogCars;
+export default CatalogCars
