@@ -10,11 +10,11 @@ type FilterProps = {
   isMobile?: boolean;
 };
 
-// Массивы enum для отображения
+
 const TYPES = Object.values(type_car);
 const CAPACITIES = Object.values(capacity_car);
 
-const Filters: React.FC<FilterProps> = ({ isMobile = false }) => {
+const Filters: React.FC<FilterProps> = ({ isMobile = true }) => {
   const dispatch = useDispatch();
   const filters = useSelector((state: RootState) => state.carFilters);
 
@@ -80,7 +80,7 @@ const Filters: React.FC<FilterProps> = ({ isMobile = false }) => {
               type="range"
               min={1800}
               max={4000}
-              step={300}
+              step={100}
               value={filters.maxPrice}
               onChange={(e) => dispatch(setMaxPrice(Number(e.target.value)))}
             />

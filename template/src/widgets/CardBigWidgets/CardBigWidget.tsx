@@ -34,16 +34,16 @@ const CardBigWidget: React.FC<CardBigWidgetProps> = ({imgCar, h1Text, pText, wid
             >   
                 <div className="px-5 py-2">
                     <h1 className="
-                    text-[clamp(16px,4vw,36px)] text-white wrap-normal text-left m-0
+                    text-[clamp(16px,2.5vw,36px)] text-white wrap-normal text-left m-0
                     "
                     >{h1Text}</h1>
-                    <h1 className="text-[clamp(11px,2vw,16px)] text-white text-left m-0 py-2"
+                    <h1 className="text-[clamp(11px,2.5vw,16px)] text-white text-left m-0 py-0"
                     style={{
                         textWrap: "balance"
                     }}
                     >{pText}</h1>
                 </div>
-                <CarImg path={imgCar} width={{min: "180px", preferred: "50vw", max: "380px"}} onclick={onclick}/>
+                <CarImg path={imgCar} width={{min: "180px", preferred: "45vw", max: "380px"}} onclick={onclick}/>
             </div>
         </>
     )

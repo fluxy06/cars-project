@@ -12,7 +12,7 @@ type FiltersState = {
 const initialState: FiltersState = {
     types: [],
     capacity: [],
-    maxPrice: Infinity,
+    maxPrice: 10000,
 }
 
 const carFiltersSlice = createSlice({

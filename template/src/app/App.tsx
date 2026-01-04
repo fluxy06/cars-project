@@ -18,12 +18,12 @@ const App: React.FC = () => {
           {/* Filters (left) */}
           <aside className="hidden lg:block w-[280px] shrink-0">
             <div className="sticky top-24">
-              <Filters isMobile={false} />
+              <Filters isMobile={true} />
             </div>
           </aside>
 
           {/* Content (right) */}
-          <section className="flex-1 min-w-0 flex flex-col gap-10">
+          <section className="flex-1 min-w-0 flex flex-col gap-10 justify-end">
             <BigCardsLayot />
             <CatalogCars />
           </section>
